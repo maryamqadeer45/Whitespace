@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Whitespace Landing Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #fff;
+      color: #043873;
+    }
+    .bg-main {
+      background: #043873;
+      color: #fff;
+    }
+    .navbar-custom {
+      background: #043873;
+    }
+    .btn-yellow {
+      background: #ffe492;
+      color: #043873;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 24px;
+    }
+    .btn-blue {
+      background: #4f9cf9;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 24px;
+    }
+    .btn-blue:hover, .btn-yellow:hover {
+      opacity: 0.9;
+    }
+    .hero-section {
+      background: #043873;
+      background-image: url(./Element.png);
+      color: #fff;
+      padding: 60px 0 40px 0;
+      position: relative;
+      overflow: hidden;
+    } 
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      color: #e0e6f7;
+    }
+    .hero-img {
+      background: #cfe2ff;
+      border-radius: 8px;
+      min-height: 220px;
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+    }
+    .project-bg {
+         position: relative;
+         z-index: 1;
+    }
+
+    .project-bg::before {
+      content: "";
+      position: absolute;
+  left: -40px;
+  top: 60px; /* heading ke neeche se shuru ho */
+  width: 320px; /* jitni choti chahiye, adjust karen */
+  height: 320px;
+      background: url('./BACKGROUND@2x.png') no-repeat left top;
+      background-size: contain;
+  opacity: 0.15; /* halki si image */
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .project-bg > * {
+      position: relative;
+      z-index: 1;
+    }
+    .section-title {
+      font-size: 2rem;
+  font-weight: 700;
+      margin-bottom: 12px;
+      color: #043873;
+}
+.section-desc {
+      color: #4f4f4f;
+      margin-bottom: 18px;
+}
+.btn-blue {
+  background: #4f9cf9;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 24px;
+  font-weight: 600;
+}
+    
+    .feature-img, .feature-img-alt {
+      background: #cfe2ff;
+      border-radius: 8px;
+      min-height: 180px;
+      width: 100%;
+      max-width: 320px;
+      margin: auto;
+    }
+    .circle-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      margin: 40px 0;
+    }
+    .circle-icon {
+      width: 48px;
+      height: 48px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      font-size: 1.5rem;
+      color: #4f9cf9;
+    }
+    .pricing-section {
+      background: #fff;
+      padding: 60px 0 40px 0;
+    }
+    .pricing-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-price {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-card {
+      border-radius: 16px;
+      border: 1.5px solid #ffe492;
+      background: #fff;
+      box-shadow: none;
+      padding: 32px 24px;
+      text-align: left;
+      min-height: 480px;
+      transition: box-shadow 0.2s;
+      margin-bottom: 24px;
+    }
+    .pricing-card.personal {
+      background: #043873;
+      color: #fff;
+      border: 1.5px solid #4f9cf9;
+      box-shadow: 0 2px 16px rgba(4,56,115,0.07);
+    }
+    .pricing-card.personal .pricing-title,
+    .pricing-card.personal .pricing-price {
+      color: #ffe492;
+    }
+    .pricing-card.personal .btn {
+      background: #4f9cf9;
+      color: #fff;
+      border: none;
+    }
+    .pricing-card .btn {
+      border-radius: 8px;
+      font-weight: 600;
+      padding: 8px 24px;
+      margin-top: 1.5rem;
+    }
+    .pricing-card .btn-outline {
+      background: #fff;
+      color: #043873;
+      border: 1.5px solid #ffe492;
+    }
+    .pricing-card .btn-outline:hover {
+      background: #ffe492;
+      color: #043873;
+    }
+    .pricing-card.personal .btn:hover {
+      background: #174ea6;
+      color: #fff;
+    }
+    .pricing-features {
+      margin-bottom: 0.5rem;
+      color: #222;
+      font-size: 1rem;
+      padding-left: 0;
+    }
+    .pricing-features li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .pricing-card.personal .pricing-features {
+      color: #fff;
+    }
+    .highlight-underline, .highlight {
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+      background: none !important;
+      color: inherit;
+      z-index: 1;
+    }
+    .highlight-underline img, .highlight img {
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 18px;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .plan{
+      background-color: #4f9cf9;
+    }
+    .started{background-color: #fff;color:black;}
+    .sponsors {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin: 32px 0;
+    }
+    .sponsor-logo {
+      height: 32px;
+      opacity: 0.8;
+    }
+    .testimonial-section {
+      background: #fff;
+      padding: 60px 0 40px 0;
+    }
+    .testimonial-card {
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(30, 60, 120, 0.13);
+      padding: 40px 36px 32px 36px;
+      min-height: 370px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .white-card {
+      background: #fff;
+      border: none;
+      color: #1a2954;
+    }
+    .blue-card {
+      background: #5ea3f7;
+      color: #fff;
+    }
+    .testimonial-quote-img {
+      width: 54px;
+      height: 38px;
+      margin-bottom: 28px;
+      margin-left: 2px;
+    }
+    .testimonial-quote-img.dark {
+      filter: brightness(0) saturate(100%) invert(16%) sepia(97%) saturate(747%) hue-rotate(181deg) brightness(97%) contrast(98%);
+    }
+    .testimonial-quote-img.light {
+      filter: brightness(0) invert(1);
+    }
+    .testimonial-text {
+      font-size: 1.13rem;
+      margin-bottom: 28px;
+      color: inherit;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    .testimonial-hr {
+      width: 100%;
+      border: none;
+      border-top: 2px solid #e0e6ed;
+      margin: 0 0 32px 0;
+    }
+    .testimonial-hr.light {
+      border-top: 2px solid #b3d1fa;
+    }
+    .testimonial-footer {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .testimonial-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #e0e6ed;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 8px rgba(30,60,120,0.10);
+    }
+    .blue-card .testimonial-img {
+      border: 4px solid #b3d1fa;
+      background: #b3d1fa;
+    }
+    .testimonial-name {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #043873 !important;
+    }
+    .testimonial-title {
+      font-size: 1.05rem;
+      color: #6c757d;
+      font-weight: 400;
+    }
+    .blue-card .testimonial-title {
+      color: #eaf3fe;
+    }
+    .footer {
+      background: #043873;
+      color: #fff;
+      padding: 40px 0 20px 0;
+      font-size: 0.95rem;
+    }
+    .footer a {
+      color: #ffe492;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .highlight {
+      background: #ffe492;
+      color: #043873;
+      border-radius: 4px;
+      padding: 0 4px;
+      font-weight: 700;
+    }
+    @media (max-width: 992px) {
+      .hero-title { font-size: 2rem; }
+      .section-title { font-size: 1.4rem; }
+      .circle-icons { gap: 18px; }
+    }
+    @media (max-width: 768px) {
+      .hero-section, .pricing-section, .testimonial-section { padding: 32px 0 24px 0; }
+      .circle-icons { flex-wrap: wrap; }
+      .sponsors { gap: 18px; }
+    }
+    @media (max-width: 576px) {
+      .hero-title { font-size: 1.3rem; }
+      .section-title { font-size: 1.1rem; }
+      .pricing-card { padding: 18px 8px; }
+      .testimonial-card { padding: 12px 6px; }
+    }
+    @media (max-width: 767.98px) {
+      .pricing-card { min-height: unset; padding: 18px 8px; }
+    }
+    .highlight-underline-blue {
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+      z-index: 1;
+      color: #fff;
+    }
+    .highlight-underline-blue::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0.08em;
+      height: 0.55em;
+      width: 100%;
+      z-index: -1;
+      background: url('data:image/svg+xml;utf8,<svg width="200" height="30" viewBox="0 0 200 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 25 Q50 30 100 20 Q150 10 195 25" stroke="%234f9cf9" stroke-width="13" stroke-linecap="round" /></svg>') repeat-x left bottom;
+      background-size: 100% 100%;
+      border-radius: 0.2em;
+      pointer-events: none;
+    }
+    @media (max-width: 400px) {
+      .section-title { font-size: 1.1rem !important; }
+      .pricing-card { padding: 10px 2px !important; }
+    }
+    @media (max-width: 575.98px) {
+      /* Project Management Section */
+      .project-management-row {
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+      }
+      .project-management-img,
+      .project-management-text {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        padding: 0 !important;
+      }
+      .project-management-img {
+        margin-bottom: 1.5rem !important;
+      }
+      /* Our Sponsors Section */
+      .sponsors-row {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 32px !important;
+        justify-content: center !important;
+      }
+      .sponsor-logo,
+      .sponsors-row span {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+      }
+      /* Customise Section */
+      .customise-row {
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+      }
+      .customise-img {
+        margin-bottom: 1.5rem !important;
+      }
+      .customise-btn {
+        margin-top: 1.5rem !important;
+      }
+    }
+    .testimonials-heading {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .testimonials-heading .highlight {
+      background: linear-gradient(90deg, #ffe066 60%, transparent 0%);
+      border-radius: 6px;
+      padding: 0 8px;
+      color: #1a2954;
+    }
+    @media (max-width: 900px) {
+      .testimonial-card {
+        min-height: 280px;
+        padding: 22px 12px 18px 12px;
+      }
+    }
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+      .testimonial-card {
+        margin-bottom: 18px;
+      }
+    }
+    .testimonial-hr.black {
+      border-top: 2px solid #23272f;
+    }
+    .footer-link {
+      color: #eaf3fe;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-link:hover {
+      color: #ffe492;
+      text-decoration: underline;
+    }
+    .footer .btn-blue {
+      background: #4f9cf9;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 24px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .footer .btn-blue:hover {
+      background: #174ea6;
+      color: #fff;
+    }
+    /* CSS for yellow brush underline */
+    .highlight-underline {
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+      background: none !important;
+      color: inherit;
+      z-index: 1;
+    }
+    .highlight-underline img {
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 18px;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand text-white fw-bold d-flex align-items-center" href="#">
+        <img src="./Logo Icon.png" alt="Logo" class="me-2" style="border-radius:6px; width:32px; height:32px; object-fit:contain;">
+        whitespace
+      </a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Product
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="productDropdown">
+              <li><a class="dropdown-item" href="#">Overview</a></li>
+              <li><a class="dropdown-item" href="#">Features</a></li>
+              <li><a class="dropdown-item" href="#">Integrations</a></li>
+              <li><a class="dropdown-item" href="#">Pricing</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="solutionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Solution
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="solutionDropdown">
+              <li><a class="dropdown-item" href="#">For Teams</a></li>
+              <li><a class="dropdown-item" href="#">For Enterprise</a></li>
+              <li><a class="dropdown-item" href="#">For Individuals</a></li>
+              <li><a class="dropdown-item" href="#">Use Cases</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item" href="#">Documentation</a></li>
+              <li><a class="dropdown-item" href="#">Tutorials</a></li>
+              <li><a class="dropdown-item" href="#">Blog</a></li>
+              <li><a class="dropdown-item" href="#">Support</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="pricingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Pricing
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="pricingDropdown">
+              <li><a class="dropdown-item" href="#">Free Plan</a></li>
+              <li><a class="dropdown-item" href="#">Personal Plan</a></li>
+              <li><a class="dropdown-item" href="#">Organization Plan</a></li>
+              <li><a class="dropdown-item" href="#">Enterprise</a></li>
+            </ul>
+          </li>
+          <li class="nav-item ms-lg-3"><a class="btn btn-yellow" href="#">Login</a></li>
+          <li class="nav-item ms-2"><a class="btn btn-blue" href="#">
+            TryWhitespace Free <i class="bi bi-arrow-right ms-2"></i>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="hero-title">Get More Done with whitespace</h1>
+          <p class="hero-desc">Boost your productivity and manage your projects efficiently with whitespace. Collaborate, plan, and execute—all in one place.</p>
+          <a href="#" class="btn btn-blue">Get Started</a>
+        </div>
+        <div class="col-lg-6 text-center">
+          <div class="hero-img d-flex align-items-center justify-content-center">
+            <!-- Replace with your hero image -->
+            <span style="color:#043873;font-size:2rem;"><img src="./download.jpeg" alt=""></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Project Management Section -->
+  <section class="py-5 bg-white">
+    <div class="container-fluid px-3 px-md-5">
+      <div class="row align-items-center flex-column-reverse flex-md-row project-management-row" style="min-height: 380px;">
+        <!-- Left: Text -->
+        <div class="col-md-7 d-flex flex-column justify-content-center align-items-end mb-4 mb-md-0 project-management-text" style="height: 100%; padding-right: 6vw;">
+          <div style="max-width: 480px;">
+            <h2 class="section-title mb-3">Project <span class="highlight-underline" style="position:relative;display:inline-block;">Management
+              <img src="./yellow.png" alt="underline">
+            </span></h2>
+            <p class="section-desc">
+              Manage your projects, tasks, and teams with ease. whitespace provides all the tools you need to stay organized and productive.
+            </p>
+            <a href="#" class="btn btn-blue" style="width: fit-content; padding: 12px 32px; font-size: 1.2rem;">Learn More</a>
+          </div>
+        </div>
+        <!-- Right: Image -->
+        <div class="col-md-5 d-flex justify-content-center align-items-center mb-4 mb-md-0 project-management-img">
+          <div class="img-box">
+            <img src="./istockphoto-2173725886-1024x1024.jpg" alt="Project Management" style="max-width: 320px; width: 100%; border-radius: 12px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Together Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <!-- Left Side: Image -->
+        <div class="col-md-6 text-center">
+          <img src="./Work Together Image.png" alt="Work Together" style="max-width: 90%; width: 350px;">
+        </div>
+        <!-- Right Side: Text -->
+        <div class="col-md-6">
+          <h2 class="section-title">Work <span class="highlight-underline" style="position:relative;display:inline-block;">together
+            <img src="./yellow.png" alt="underline">
+          </span></h2>
+          <p class="section-desc">
+            With whitespace, share your notes with your colleagues and collaborate on them.<br>
+            You can also publish a note to the internet and share it with others.
+          </p>
+          <a href="#" class="btn btn-blue">Try it now <i class="bi bi-arrow-right ms-2"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use as Extensions Section -->
+  <section class="py-5 bg-main">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-md-6">
+          <h2 class="section-title text-white">Use as <span class="highlight-underline" style="position:relative;display:inline-block;">Extensions
+            <img src="./yellow.png" alt="underline">
+          </span></h2>
+          <p class="section-desc text-white">Integrate whitespace with your favorite tools and workflows. Extend its functionality to suit your needs.</p>
+          <a href="#" class="btn btn-yellow">Learn More</a>
+        </div>
+        <div class="col-md-6 text-center">
+          <div class="feature-img-alt d-flex align-items-center justify-content-center" style="background:#fff;">
+            <span style="color:#043873;font-size:1.5rem;"><img src="./images.jpeg" alt=""></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customise it to your needs Section -->
+  <section class="py-5 bg-white">
+    <div class="container-fluid px-3 px-md-5">
+      <div class="row align-items-center flex-column-reverse flex-md-row customise-row" style="min-height: 340px;">
+        <!-- Left: Image -->
+        <div class="col-md-6 d-flex justify-content-center align-items-center mb-4 mb-md-0 customise-img">
+          <div style="background: #e6f0ff; border-radius: 20px; width: 370px; height: 260px; display: flex; justify-content: center; align-items: center;">
+            <img src="./open-notebook-with-colorful-icons_1134-424.avif" alt="Customise" style="max-width: 90%; max-height: 90%; border-radius: 16px; box-shadow: 0 2px 16px rgba(4,56,115,0.07); object-fit: contain;">
+          </div>
+        </div>
+        <!-- Right: Text -->
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+          <h2 class="section-title mb-3">Customise it to <span class="highlight-underline" style="position:relative;display:inline-block;">your needs
+            <img src="./yellow.png" alt="underline">
+          </span></h2>
+          <p class="section-desc" style="max-width: 600px;">
+            Customise the app with plugins, custom themes and multiple text editors (Rich Text or Markdown).<br>
+            Or create your own scripts and plugins using the<br>Extension API.
+          </p>
+          <a href="#" class="btn btn-blue customise-btn" style="width: fit-content;">Let's Go <i class="bi bi-arrow-right ms-2"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <div class="container">
+      <h2 class="section-title text-center mb-4" style="font-size:2.5rem; font-weight:700;">Choose <span class="highlight-underline" style="position:relative;display:inline-block;">Your Plan
+        <img src="./yellow.png" alt="underline">
+      </span></h2>
+      <p class="text-center mb-5" style="max-width:600px;margin:auto;">Whether you want to get organized, keep your personal life on track, or boost workplace productivity, Evernote has the right plan for you.</p>
+      <div class="row justify-content-center">
+        <!-- Free Plan -->
+        <div class="col-md-4 mb-4">
+          <div class="pricing-card">
+            <div class="pricing-title">Free</div>
+            <div class="pricing-price">$0</div>
+            <div style="color:#222; font-size:1rem; margin-bottom:0.5rem;">Capture ideas and find them quickly</div>
+            <ul class="pricing-features">
+              <li><i class="bi bi-check2-circle text-success"></i>Sync unlimited devices</li>
+              <li><i class="bi bi-check2-circle text-success"></i>10 GB monthly uploads</li>
+              <li><i class="bi bi-check2-circle text-success"></i>200 MB max. note size</li>
+              <li><i class="bi bi-check2-circle text-success"></i>Customize Home dashboard and access extra widgets</li>
+              <li><i class="bi bi-check2-circle text-success"></i>Connect primary Google Calendar account</li>
+              <li><i class="bi bi-check2-circle text-success"></i>Add due dates, reminders, and notifications to your tasks</li>
+            </ul>
+            <a href="#" class="btn btn-outline">Get Started</a>
+          </div>
+        </div>
+        <!-- Personal Plan -->
+        <div class="col-md-4 mb-4">
+          <div class="pricing-card personal">
+            <div class="pricing-title">Personal</div>
+            <div class="pricing-price">$11.99</div>
+            <div style="color:#fff; font-size:1rem; margin-bottom:0.5rem;">Keep home and family on track</div>
+            <ul class="pricing-features">
+              <li><i class="bi bi-check2-circle text-white"></i>Sync unlimited devices</li>
+              <li><i class="bi bi-check2-circle text-white"></i>10 GB monthly uploads</li>
+              <li><i class="bi bi-check2-circle text-white"></i>200 MB max. note size</li>
+              <li><i class="bi bi-check2-circle text-white"></i>Customize Home dashboard and access extra widgets</li>
+              <li><i class="bi bi-check2-circle text-white"></i>Connect primary Google Calendar account</li>
+              <li><i class="bi bi-check2-circle text-white"></i>Add due dates, reminders, and notifications to your tasks</li>
+            </ul>
+            <a href="#" class="btn">Get Started</a>
+          </div>
+        </div>
+        <!-- Organization Plan -->
+        <div class="col-md-4 mb-4">
+          <div class="pricing-card">
+            <div class="pricing-title">Organization</div>
+            <div class="pricing-price">$49.99</div>
+            <div style="color:#222; font-size:1rem; margin-bottom:0.5rem;">Capture ideas and find them quickly</div>
+            <ul class="pricing-features">
+              <li><i class="bi bi-check2-circle text-success"></i>Sync unlimited devices</li>
+              <li><i class="bi bi-check2-circle text-success"></i>10 GB monthly uploads</li>
+              <li><i class="bi bi-check2-circle text-success"></i>200 MB max. note size</li>
+              <li><i class="bi bi-check2-circle text-success"></i>Customize Home dashboard and access extra widgets</li>
+              <li><i class="bi bi-check2-circle text-success"></i>Connect primary Google Calendar account</li>
+              <li><i class="bi bi-check2-circle text-success"></i>Add due dates, reminders, and notifications to your tasks</li>
+            </ul>
+            <a href="#" class="btn btn-outline">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Your work, everywhere you are Section -->
+  <section class="py-5" style="background: #0a3970; position: relative; min-height: 380px;">
+    <!-- Left SVG background image -->
+    <img src="./BACKGROUND@2x.png" alt="bg" style="position: absolute; left: 0; top: 0; width: 340px; opacity: 0.18; z-index: 0; pointer-events: none;">
+    <div class="container position-relative" style="z-index: 1;">
+      <div class="row justify-content-center align-items-center text-center" style="min-height: 320px;">
+        <div class="col-lg-10 mx-auto">
+          <h2 class="fw-bold mb-3" style="font-size:2.7rem; color:#fff; line-height:1.1;">
+            Your work, everywhere you <span class="highlight-underline-blue">are</span>
+          </h2>
+          <p class="mb-4" style="color:#cfe2ff; font-size:1.05rem; max-width:700px; margin:auto;">
+            Access your notes from your computer, phone or tablet by synchronising with various services, including whitespace, Dropbox and OneDrive. The app is available on Windows, macOS, Linux, Android and iOS. A terminal app is also available!
+          </p>
+          <a href="#" class="btn btn-blue" style="padding: 10px 32px; font-size: 1.1rem;">
+            Try Taskey <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 100% your data section -->
+  <section class="py-5 bg-white">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center flex-column-reverse flex-md-row justify-content-center">
+        <!-- Left: Text -->
+        <div class="col-lg-5 d-flex flex-column justify-content-center mb-4 mb-md-0">
+          <h2 class="section-title mb-3" style="font-size:2.7rem; font-weight:800; color:#23272f;">
+            100% <span class="highlight-underline" style="position:relative;display:inline-block;">your data
+              <img src="./yellow.png" alt="underline">
+            </span>
+          </h2>
+          <p class="section-desc" style="color:#23272f; max-width: 600px;">
+            The app is open source and your notes are saved to an open format, so you'll always have access to them. Uses End-To-End Encryption (E2EE) to secure your notes and ensure no-one but yourself can access them.
+          </p>
+          <a href="#" class="btn btn-blue" style="width: fit-content; padding: 12px 32px; font-size: 1.1rem;">Read more <i class="bi bi-arrow-right ms-2"></i></a>
+        </div>
+        <!-- Right: Images horizontally -->
+        <div class="col-lg-5 d-flex flex-row justify-content-center align-items-center gap-4 mb-4 mb-md-0">
+          <img src="./Element 1.png" alt="Data Illustration 1" style="max-width: 420px; width: 100%; height: auto;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sponsors Section -->
+  <section class="py-5 bg-white">
+    <div class="container text-center">
+      <h2 class="section-title mb-4 fw-bold" style="font-size:2.3rem; letter-spacing:0.5px;">
+        Our <span class="highlight-underline" style="position:relative;display:inline-block;">sponsors
+          <img src="./yellow.png" alt="underline">
+        </span>
+      </h2>
+      <div class="d-flex flex-wrap justify-content-center align-items-center sponsors-row" style="gap: 120px !important;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="sponsor-logo" alt="Apple" style="height: 40px;">
+        <span class="d-flex align-items-center" style="gap: 10px;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="sponsor-logo" alt="Microsoft" style="height: 40px;">
+          <span class="highlight-underline" style="font-weight:700; color:#232323; font-size:1.2rem;">Microsoft</span>
+        </span>
+        <span class="d-flex align-items-center" style="gap: 10px;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Slack_Icon.png" class="sponsor-logo" alt="Slack" style="height: 40px;">
+          <span class="highlight-underline" style="font-weight:900; color:#232323; font-size:1.7rem; letter-spacing:1px;">slack</span>
+        </span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="sponsor-logo" alt="Google" style="height: 40px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Work with Your Favorite Apps Section -->
+  <section class="py-5 position-relative" style="background: #0a3970; min-height: 420px; overflow: hidden;">
+    <!-- Wave background image -->
+    <img src="./wavy.png" alt="wave background" style="position:absolute; left:0; top:50%; width:100vw; min-width:1200px; max-width:none; z-index:0; transform:translateY(-50%); opacity:0.5; pointer-events:none;">
+    <div class="container position-relative" style="z-index: 1;">
+      <div class="row align-items-center flex-column flex-md-row">
+        <!-- Left: Integration Image -->
+        <div class="col-md-6 d-flex justify-content-center align-items-center mb-4 mb-md-0">
+          <img src="./Apps.png" alt="Integrations" style="max-width: 420px; width: 100%; height: auto;">
+        </div>
+        <!-- Right: Text -->
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-start text-white">
+          <h2 class="fw-bold mb-3" style="font-size:2.5rem; line-height:1.1;">Work with Your Favorite Apps Using whitespace</h2>
+          <p class="mb-4" style="color:#cfe2ff; font-size:1.1rem; max-width: 480px;">
+            Whitespace teams up with your favorite software. Integrate with over 1000+ apps with Zapier to have all the tools you need for your project success.
+          </p>
+          <a href="#" class="btn btn-blue" style="padding: 10px 32px; font-size: 1.1rem;">
+            Read more <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonial-section">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">What Our Clients <span class="highlight-underline" style="position:relative;display:inline-block;">Says
+        <img src="./yellow.png" alt="underline">
+      </span></h2>
+      <div class="row justify-content-center g-4">
+        <!-- Card 1: White -->
+        <div class="col-md-4">
+          <div class="testimonial-card white-card">
+            <img src="./Quote.png" alt="Quote" class="testimonial-quote-img dark" />
+            <div class="testimonial-text">
+              Whitepate is designed as a collaboration tool for businesses that is a full project management solution.
+            </div>
+            <hr class="testimonial-hr black">
+            <div class="testimonial-footer">
+              <img src="./2.png" alt="Client 1" class="testimonial-img" />
+              <div>
+                <div class="testimonial-name">Oberon Shaw, MCH</div>
+                <div class="testimonial-title">Head of Talent Acquisition, North America</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2: Blue -->
+        <div class="col-md-4">
+          <div class="testimonial-card blue-card">
+            <img src="./Quote1.png" alt="Quote" class="testimonial-quote-img light" />
+            <div class="testimonial-text">
+              Whitepate is designed as a collaboration tool for businesses that is a full project management solution.
+            </div>
+            <hr class="testimonial-hr light">
+            <div class="testimonial-footer">
+              <img src="./1.png" alt="Client 2" class="testimonial-img" />
+              <div>
+                <div class="testimonial-name">Oberon Shaw, MCH</div>
+                <div class="testimonial-title">Head of Talent Acquisition, North America</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3: Blue -->
+        <div class="col-md-4">
+          <div class="testimonial-card blue-card">
+            <img src="./Quote1.png" alt="Quote" class="testimonial-quote-img light" />
+            <div class="testimonial-text">
+              Whitepate is designed as a collaboration tool for businesses that is a full project management solution.
+            </div>
+            <hr class="testimonial-hr light">
+            <div class="testimonial-footer">
+              <img src="./Avater.png" alt="Client 3" class="testimonial-img" />
+              <div>
+                <div class="testimonial-name">Oberon Shaw, MCH</div>
+                <div class="testimonial-title">Head of Talent Acquisition, North America</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="py-5 bg-main text-center" style="padding-bottom: 60px !important;">
+    <div class="container">
+      <h2 class="section-title text-white mb-2" style="font-size:2.7rem; font-weight:800; line-height:1.1;">
+        Try Whitespace<br><span style="display:inline-block; margin-top:2px;">today</span>
+      </h2>
+      <div class="mb-3" style="color:#eaf3fe; font-size:1.15rem; font-weight:400;">Get started for free.<br>Add your whole team as your needs grow.</div>
+      <a href="#" class="btn btn-blue mb-3" style="padding: 12px 36px; font-size: 1.15rem; font-weight:600;">Try Whitespace free →</a>
+      <div class="mt-3 mb-2" style="color:#eaf3fe; font-size:1.05rem;">
+        On a big team? Contact sales
+      </div>
+      <div class="mt-2">
+        <i class="bi bi-apple fs-1 mx-2"></i>
+        <i class="bi bi-windows fs-1 mx-2"></i>
+        <i class="bi bi-android2 fs-1 mx-2"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer bg-main pt-5 pb-3" style="font-size: 1rem;">
+    <div class="container">
+      <div class="row gy-4 align-items-start">
+        <!-- Logo and Description -->
+        <div class="col-md-3">
+          <div class="fw-bold mb-2 d-flex align-items-center">
+            <img src="./Logo Icon.png" alt="Logo" style="border-radius:6px; margin-right:8px;"> whitespace
+          </div>
+          <div style="color:#eaf3fe; font-size:1rem;">Whitespace was created for the new ways we live and work. We make a better workspace around the world</div>
+        </div>
+        <!-- Product -->
+        <div class="col-md-2">
+          <div class="mb-2 fw-bold" style="color:#fff;">Product</div>
+          <div><a href="#" class="footer-link">Overview</a></div>
+          <div><a href="#" class="footer-link">Pricing</a></div>
+          <div><a href="#" class="footer-link">Customer stories</a></div>
+        </div>
+        <!-- Resources -->
+        <div class="col-md-2">
+          <div class="mb-2 fw-bold" style="color:#fff;">Resources</div>
+          <div><a href="#" class="footer-link">Blog</a></div>
+          <div><a href="#" class="footer-link">Guides & tutorials</a></div>
+          <div><a href="#" class="footer-link">Help center</a></div>
+        </div>
+        <!-- Company -->
+        <div class="col-md-2">
+          <div class="mb-2 fw-bold" style="color:#fff;">Company</div>
+          <div><a href="#" class="footer-link">About us</a></div>
+          <div><a href="#" class="footer-link">Careers</a></div>
+          <div><a href="#" class="footer-link">Media kit</a></div>
+        </div>
+        <!-- Try It Today -->
+        <div class="col-md-3">
+          <div class="mb-2 fw-bold" style="color:#fff;">Try It Today</div>
+          <div style="color:#eaf3fe; font-size:1rem; margin-bottom:12px;">Get started for free. Add your whole team as your needs grow.</div>
+          <a href="#" class="btn btn-blue w-100" style="font-size:1rem;">Start today →</a>
+        </div>
+      </div>
+      <hr style="border-top:1.5px solid #eaf3fe; margin:32px 0 16px 0;">
+      <div class="d-flex flex-wrap justify-content-between align-items-center" style="color:#eaf3fe; font-size:0.97rem;">
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <span>🌐 English</span>
+          <span>·</span>
+          <a href="#" class="footer-link">Terms & privacy</a>
+          <span>·</span>
+          <a href="#" class="footer-link">Security</a>
+          <span>·</span>
+          <a href="#" class="footer-link">Status</a>
+          <span>©2021 Whitespace LLC.</span>
+        </div>
+        <div class="d-flex align-items-center gap-3 mt-2 mt-md-0">
+          <a href="#" class="footer-link"><i class="bi bi-facebook fs-5"></i></a>
+          <a href="#" class="footer-link"><i class="bi bi-twitter fs-5"></i></a>
+          <a href="#" class="footer-link"><i class="bi bi-linkedin fs-5"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
